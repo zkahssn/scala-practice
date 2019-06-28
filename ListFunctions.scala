@@ -51,4 +51,3 @@ def reverseListRecursion(list : List[Int], reversedList : List[Int]) : List[Int]
 	}
 }
 
-}
