@@ -51,3 +51,26 @@ def reverseListRecursion(list : List[Int], reversedList : List[Int]) : List[Int]
 	}
 }
 
+def isPalindrome(list : List[Any]) : Boolean = list == list.reverse
+
+
+
+def flatten(ls: List[Any]): List[Any] = ls flatMap {
+    case ms: List[_] => flatten(ms)
+    case e => List(e)
+  }
+
+
+def compress(list : List[Symbol], compressed : List[Symbol], last : Symbol) : List[Symbol] = list match{
+
+	case Nil => compressed.reverse
+	case h::tail if h != last => compress(tail, h :: compressed, h) 
+	case h::tail if h == last => compress(tail, compressed, h)
+			
+
+} 
+
+
+
+}
+
