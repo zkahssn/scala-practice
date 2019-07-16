@@ -67,8 +67,16 @@ def compress(list : List[Symbol], compressed : List[Symbol], last : Symbol) : Li
 	case h::tail if h != last => compress(tail, h :: compressed, h) 
 	case h::tail if h == last => compress(tail, compressed, h)
 			
-
 } 
+
+def pack(list : List[Symbol], subList : List[Symbol], overallList : List[List[Symbol]], lastEl : Symbol) : List[List[Symbol]] = list match{
+	case Nil 	=> subList :: overallList
+	case h::Nil	if h == lastEl => pack(Nil,h :: subList, overallList, h)
+	case h::Nil 			   => pack(Nil, h::Nil, overallList, h)	
+	case list 	if list.head == lastEl || (list.head != lastEl && (lastEl::subList)) => pack(list.tail,list.head :: subList, overallList, list.head)
+	case list 	if list.head != lastEl => pack(list.tail,list.head :: Nil, subList :: overallList, list.head)
+
+}
 
 
 
